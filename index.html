@@ -114,7 +114,7 @@
                 width: 80%;
             }
 
-            .nav{
+            .nav {
                 background-color: rgba(0, 0, 0, 0.5);
             }
         }
@@ -123,7 +123,7 @@
             body {
                 width: 100%;
             }
-            .nav{
+            .nav {
                 background-color: rgba(0, 0, 0, 0.5);
             }
         }
@@ -234,8 +234,8 @@
                 <!-- Add Pagination -->
                 <!-- <div class="swiper-pagination"></div> -->
             </div>
-            <a id="about"></a>
-            <div class="about">
+
+            <div id="about" class="about">
                 <h2 class="about-title">關於奇新&nbsp;About</h2>
                 <p>
                     <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;起源</h4>
@@ -253,8 +253,8 @@
                     </p>
                 </p>
             </div>
-            <a id="learning"></a>
-            <div class="learning">
+
+            <div id="learning" class="learning">
                 <h2 class="learning-title">學習環境&nbsp;Learning</h2>
                 <div class="photoimg">
                     <div class="photo-img">
@@ -280,8 +280,8 @@
                     <div style="clear:both;"></div>
                 </div>
             </div>
-            <a id="teacher"></a>
-            <div class="teacher">
+
+            <div id="teacher" class="teacher">
                 <h2 class="teacher-title">多元師資 Teacher</h2>
                 <div class="teacher-block">
                     <div class="teacher-left">
@@ -319,8 +319,8 @@
                     <div style="clear:both;"></div>
                 </div>
             </div>
-            <a id="minds"></a>
-            <div class="minds">
+
+            <div id="minds" class="minds">
                 <h2 class="minds-title">學習項目 Minds</h2>
                 <div class="minds-block">
                     <div class="minds-left">
@@ -346,6 +346,7 @@
                                 <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雙吉他伴奏</h5>
                             </ul>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
                     <div class="minds-right">
                         <h4>2.烏克麗麗:</h4>
@@ -370,12 +371,12 @@
                                 <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雙烏克伴奏</h5>
                             </ul>
                         </div>
-                        <div style="clear:both;"></div>
                     </div>
+                    <div style="clear:both;"></div>
                 </div>
-            </div>    
-            <a id="sales"></a>
-            <div class="sales">
+            </div>
+
+            <div id="sales" class="sales">
                 <h2 class="sales-title">樂器項目 Sales</h2>
                 <div class="sales-photo">
                     <div class="sales-photo-img">
@@ -405,8 +406,7 @@
                     <div style="clear:both;"></div>
                 </div>
             </div>
-            <a id="results"></a>
-            <div class="results">
+            <div id="results" class="results">
                 <h2 class="results-title">成果展示 Results</h2>
                 <div class="results-block">
                     <div class="photo">
@@ -511,12 +511,19 @@
     </script>
     <script>
         $(function () {
-            $("a[href *=#]: not([href =#]) ").click(function () {
-                var target = $(this.hash);
-                $("html, body").animate({
-                    scrollTop: target.offset().top
-                }, 1000);
-                return false;
+            $('a[href*="#"]:not([href="#"])').click(function () {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    console.log(target);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+
+                    if (target.length) {
+                        $('html, body').animate({
+                            scrollTop: target.offset().top - 60
+                        }, 1500);
+                        return false;
+                    }
+                }
             });
         });
     </script>
